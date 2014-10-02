@@ -28,8 +28,8 @@ android {
         applicationId "com.raizlabs.android.dialogfactory"
         minSdkVersion 4
         targetSdkVersion 20
-        versionCode 1
-        versionName "1.0"
+        versionName = version.replace("-SNAPSHOT", "")
+        versionCode = Integer.parseInt(versionName.replace(".", ""))
     }
     buildTypes {
         release {
