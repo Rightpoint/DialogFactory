@@ -102,7 +102,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
 
         String negative = chooseLabel(context, negative_label, negative_label_res);
         if(!TextUtils.isEmpty(negative)) {
-            builder.setNegativeButton(negative_label, mNegativeOnClick)
+            builder.setNegativeButton(negative_label, mNegativeOnClick);
         }
 
         String neutral = chooseLabel(context, neutral_label, neutral_label_res);
