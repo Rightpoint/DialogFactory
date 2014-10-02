@@ -1,5 +1,6 @@
 package com.raizlabs.android.dialogfactory;
 
+import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 
@@ -52,6 +53,9 @@ public class DialogFactory {
      * @param alertThemeOptions
      */
     public static void showDialog(Context context, DialogOptions dialogOptions, AlertThemeOptions alertThemeOptions) {
+        if(context instanceof Application) {
+            throw new IllegalArgumentException("You cannot use an application context for a dialog. Please use an Activity or Service");
+        }
         DialogWrapper dialogWrapper = makeDialog(context, dialogOptions);
         dialogWrapper.show();
         dialogWrapper.applyThemeOptions(alertThemeOptions);
