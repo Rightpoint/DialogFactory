@@ -20,7 +20,11 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
 
     String title;
 
+    int title_res;
+
     String message;
+
+    int message_res;
 
     String positive_label;
 
@@ -81,11 +85,16 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      */
     public final AlertDialog.Builder build(Context context){
         AlertDialog.Builder builder = getBuilder(context);
-        if(!TextUtils.isEmpty(title)){
+
+        String alertTitle = chooseLabel(context, title, title_res);
+        if(!TextUtils.isEmpty(alertTitle)){
             builder.setTitle(title);
         }
-        builder.setMessage(message)
-                .setCancelable(cancelable);
+
+        String alertMessage = chooseLabel(context, message, message_res);
+        if(!TextUtils.isEmpty(alertMessage)) {
+            builder.setMessage(message);
+        }
         String positive = chooseLabel(context, positive_label, positive_label_res);
         if(!TextUtils.isEmpty(positive)) {
             builder.setPositiveButton(positive, mPositiveOnClick);
@@ -104,6 +113,8 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
         if(Build.VERSION.SDK_INT >= 17){
                 builder.setOnDismissListener(mOnDismissListener);
         }
+
+        builder.setCancelable(cancelable);
         builder.setOnCancelListener(mOnCancelListener);
         if(mAdapter!=null){
             builder.setAdapter(mAdapter, mListClickListener);
@@ -151,12 +162,32 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
     }
 
     /**
+     * The title for this dialog
+     * @param titleRes
+     * @return
+     */
+    public OPTIONS_TYPE title(int titleRes){
+        this.title_res = titleRes;
+        return castThis();
+    }
+
+    /**
      * The message for this dialog
      * @param message
      * @return
      */
     public OPTIONS_TYPE message(String message){
         this.message = message;
+        return castThis();
+    }
+
+    /**
+     * The message for this dialog
+     * @param messageRes
+     * @return
+     */
+    public OPTIONS_TYPE message(int messageRes){
+        this.message_res = messageRes;
         return castThis();
     }
 
