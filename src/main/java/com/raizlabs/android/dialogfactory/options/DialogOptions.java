@@ -133,7 +133,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
     protected static String chooseLabel(Context context, String label, int labelRes) {
         String retString = label;
 
-        if(TextUtils.isEmpty(retString)) {
+        if(TextUtils.isEmpty(retString) && labelRes != 0) {
             retString = context.getString(labelRes);
         }
 
