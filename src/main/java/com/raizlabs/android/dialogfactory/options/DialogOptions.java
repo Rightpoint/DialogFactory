@@ -88,12 +88,12 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
 
         String alertTitle = chooseLabel(context, title, title_res);
         if(!TextUtils.isEmpty(alertTitle)){
-            builder.setTitle(title);
+            builder.setTitle(alertTitle);
         }
 
         String alertMessage = chooseLabel(context, message, message_res);
         if(!TextUtils.isEmpty(alertMessage)) {
-            builder.setMessage(message);
+            builder.setMessage(alertMessage);
         }
         String positive = chooseLabel(context, positive_label, positive_label_res);
         if(!TextUtils.isEmpty(positive)) {
@@ -102,12 +102,12 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
 
         String negative = chooseLabel(context, negative_label, negative_label_res);
         if(!TextUtils.isEmpty(negative)) {
-            builder.setNegativeButton(negative_label, mNegativeOnClick);
+            builder.setNegativeButton(negative, mNegativeOnClick);
         }
 
         String neutral = chooseLabel(context, neutral_label, neutral_label_res);
         if(!TextUtils.isEmpty(neutral)) {
-            builder.setNeutralButton(neutral_label, mNeutralOnClick);
+            builder.setNeutralButton(neutral, mNeutralOnClick);
         }
 
         if(Build.VERSION.SDK_INT >= 17){
