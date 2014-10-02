@@ -3,7 +3,6 @@ package com.raizlabs.android.dialogfactory;
 import android.app.ProgressDialog;
 import android.content.Context;
 
-import com.raizlabs.android.core.AppContext;
 import com.raizlabs.android.dialogfactory.options.AlertThemeOptions;
 import com.raizlabs.android.dialogfactory.options.DialogOptions;
 import com.raizlabs.android.dialogfactory.options.DialogWrapper;
@@ -34,16 +33,6 @@ public class DialogFactory {
     }
 
     /**
-     * Creates a dialog based on the {@link com.raizlabs.android.dialogfactory.options.DialogOptions} passed. Uses the module's context
-     *
-     * @param dialogOptions
-     * @return
-     */
-    public static DialogWrapper makeDialog(DialogOptions dialogOptions) {
-        return new DialogWrapper(dialogOptions.build(AppContext.getInstance()).create());
-    }
-
-    /**
      * Makes a progress dialog based on the {@link com.raizlabs.android.dialogfactory.options.ProgressDialogOptions} passed.
      * It will show the dialog.
      *
@@ -53,17 +42,6 @@ public class DialogFactory {
      */
     public static DialogWrapper makeProgressDialog(Context context, ProgressDialogOptions progressDialogOptions) {
         return new DialogWrapper(progressDialogOptions.showProgress(context));
-    }
-
-    /**
-     * Makes a progress dialog based on the {@link com.raizlabs.android.dialogfactory.options.ProgressDialogOptions} passed.
-     * It will show the dialog.
-     *
-     * @param progressDialogOptions
-     * @return
-     */
-    public static DialogWrapper makeProgressDialog(ProgressDialogOptions progressDialogOptions) {
-        return new DialogWrapper(progressDialogOptions.showProgress(AppContext.getInstance()));
     }
 
     /**
@@ -90,26 +68,6 @@ public class DialogFactory {
     }
 
     /**
-     * Shows a dialog using {@link com.raizlabs.android.dialogfactory.options.DialogOptions} and {@link com.raizlabs.android.dialogfactory.options.AlertThemeOptions}
-     *
-     * @param context
-     * @param dialogOptions
-     * @param alertThemeOptions
-     */
-    public static void showDialog(DialogOptions dialogOptions, AlertThemeOptions alertThemeOptions) {
-        showDialog(AppContext.getInstance(), dialogOptions, alertThemeOptions);
-    }
-
-    /**
-     * Shows a dialog using {@link com.raizlabs.android.dialogfactory.options.DialogOptions}
-     *
-     * @param dialogOptions
-     */
-    public static void showDialog(DialogOptions dialogOptions) {
-        showDialog(AppContext.getInstance(), dialogOptions, DEFAULT_THEME_OPTIONS);
-    }
-
-    /**
      * Shows a progress dialog, which is different than a regular dialog.
      *
      * @param context
@@ -118,27 +76,6 @@ public class DialogFactory {
      */
     public static ProgressDialog showProgressDialog(Context context, ProgressDialogOptions progressDialogOptions) {
         return showProgressDialog(context, progressDialogOptions, DEFAULT_THEME_OPTIONS);
-    }
-
-    /**
-     * Shows a progress dialog, which is different than a regular dialog.
-     *
-     * @param progressDialogOptions
-     * @param alertThemeOptions
-     * @return dialog - a handle to the dialog in order to notify it of data changes, or to cancel it.
-     */
-    public static ProgressDialog showProgressDialog(ProgressDialogOptions progressDialogOptions, AlertThemeOptions alertThemeOptions) {
-        return showProgressDialog(AppContext.getInstance(), progressDialogOptions, alertThemeOptions);
-    }
-
-    /**
-     * Shows a progress dialog, which is different than a regular dialog.
-     *
-     * @param progressDialogOptions
-     * @return dialog - a handle to the dialog in order to notify it of data changes, or to cancel it.
-     */
-    public static ProgressDialog showProgressDialog(ProgressDialogOptions progressDialogOptions) {
-        return showProgressDialog(AppContext.getInstance(), progressDialogOptions, DEFAULT_THEME_OPTIONS);
     }
 
     /**

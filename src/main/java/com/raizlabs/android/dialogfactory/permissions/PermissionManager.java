@@ -29,7 +29,7 @@ public class PermissionManager {
             }
         } else {
             // TODO: move strings to resources, make dialog module, or make configurable.
-            DialogFactory.showDialog(new DialogOptions().title(alertTitle).message(alertMessage)
+            DialogFactory.showDialog(context, new DialogOptions().title(alertTitle).message(alertMessage)
                     .yes().no().onPositiveClick(new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

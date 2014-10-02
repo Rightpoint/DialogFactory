@@ -5,14 +5,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-
-import com.raizlabs.android.core.DeviceUtils;
 
 /**
  * Created By: andrewgrosner
@@ -32,7 +31,7 @@ public class EditTextDialogBuilder extends AlertDialog.Builder {
          *
          * @param text The text inputted by the user
          * @return true if its valid text, it will then call
-         * {@link com.raizlabs.android.dialogfactory.views.EditTextDialogBuilder.ValidityResponseListener#onSuccess(String)}
+         * {@link com.raizlabs.android.dialogfactory.views.EditTextDialogBuilder.ValidityResponseListener#onSuccess(android.content.DialogInterface, String)}
          */
         public boolean isValid(String text);
     }
@@ -125,7 +124,8 @@ public class EditTextDialogBuilder extends AlertDialog.Builder {
                     (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS) : inputType);
             mTextBox.setHint(hint);
             ((FrameLayout) layout).addView(mTextBox);
-            int dip = (int) DeviceUtils.dp(20);
+            int dip = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 20,
+                    context.getResources().getDisplayMetrics());
             layout.setPadding(dip / 2, dip, dip / 2, dip);
         } else {
 

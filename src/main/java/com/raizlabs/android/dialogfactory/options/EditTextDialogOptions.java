@@ -3,10 +3,10 @@ package com.raizlabs.android.dialogfactory.options;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Build;
 import android.text.InputFilter;
+import android.text.TextUtils;
 
-import com.raizlabs.android.core.CompatibilityUtils;
-import com.raizlabs.android.core.StringUtils;
 import com.raizlabs.android.dialogfactory.views.EditTextDialogBuilder;
 
 /**
@@ -34,7 +34,7 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
     @Override
     protected AlertDialog.Builder getBuilder(Context context) {
         EditTextDialogBuilder editTextDialogBuilder;
-        if(CompatibilityUtils.isAboveGingerbread()) {
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.GINGERBREAD) {
             editTextDialogBuilder = new EditTextDialogBuilder(context, dialog_theme, inputType, layout, hint);
         } else {
             editTextDialogBuilder = new EditTextDialogBuilder(context, inputType, layout, hint);
@@ -42,7 +42,7 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
         editTextDialogBuilder
                 .setValidityChecker(mValidityChecker)
                 .setValidityResponseListener(mValidityResponseListener);
-        if (StringUtils.isNotNullOrEmpty(text)) {
+        if (!TextUtils.isEmpty(text)) {
             editTextDialogBuilder.setText(text);
         }
         if (mInputFilters != null) {

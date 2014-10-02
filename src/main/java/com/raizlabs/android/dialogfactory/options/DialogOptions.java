@@ -6,10 +6,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Build;
+import android.text.TextUtils;
 import android.widget.ListAdapter;
-
-import com.raizlabs.android.core.CompatibilityUtils;
-import com.raizlabs.android.core.StringUtils;
 
 /**
  * Created by andrewgrosner
@@ -26,9 +24,15 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
 
     String positive_label;
 
+    int positive_label_res;
+
     String negative_label;
 
+    int negative_label_res;
+
     String neutral_label;
+
+    int neutral_label_res;
 
     boolean cancelable = true;
 
@@ -64,7 +68,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @return
      */
     protected AlertDialog.Builder getBuilder(Context context){
-        if(CompatibilityUtils.isAboveGingerbread()) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             return new AlertDialog.Builder(context, dialog_theme);
         } else{
             return new AlertDialog.Builder(context);
@@ -77,15 +81,27 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      */
     public final AlertDialog.Builder build(Context context){
         AlertDialog.Builder builder = getBuilder(context);
-        if(StringUtils.isNotNullOrEmpty(title)){
+        if(!TextUtils.isEmpty(title)){
             builder.setTitle(title);
         }
         builder.setMessage(message)
-                .setCancelable(cancelable)
-                .setPositiveButton(positive_label, mPositiveOnClick)
-                .setNegativeButton(negative_label, mNegativeOnClick)
-                .setNeutralButton(neutral_label, mNeutralOnClick);
-        if(CompatibilityUtils.isAboveOrEqualToApiLevel(17)){
+                .setCancelable(cancelable);
+        String positive = chooseLabel(context, positive_label, positive_label_res);
+        if(!TextUtils.isEmpty(positive)) {
+            builder.setPositiveButton(positive, mPositiveOnClick);
+        }
+
+        String negative = chooseLabel(context, negative_label, negative_label_res);
+        if(!TextUtils.isEmpty(negative)) {
+            builder.setNegativeButton(negative_label, mNegativeOnClick)
+        }
+
+        String neutral = chooseLabel(context, neutral_label, neutral_label_res);
+        if(!TextUtils.isEmpty(neutral)) {
+            builder.setNeutralButton(neutral_label, mNeutralOnClick);
+        }
+
+        if(Build.VERSION.SDK_INT >= 17){
                 builder.setOnDismissListener(mOnDismissListener);
         }
         builder.setOnCancelListener(mOnCancelListener);
@@ -93,6 +109,24 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
             builder.setAdapter(mAdapter, mListClickListener);
         }
         return builder;
+    }
+
+    /**
+     * Chooses which label to use. The first priority is the string label, and if this is empty, the int label will be used.
+     * If the int label is 0, we will return null.
+     * @param context
+     * @param label
+     * @param labelRes
+     * @return
+     */
+    protected static String chooseLabel(Context context, String label, int labelRes) {
+        String retString = label;
+
+        if(TextUtils.isEmpty(retString)) {
+            retString = context.getString(labelRes);
+        }
+
+        return retString;
     }
 
     /**
@@ -137,6 +171,16 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
     }
 
     /**
+     * The positive text label
+     * @param positiveLabelRes
+     * @return
+     */
+    public OPTIONS_TYPE positiveLabel(int positiveLabelRes){
+        positive_label_res = positiveLabelRes;
+        return castThis();
+    }
+
+    /**
      * The negative text label
      * @param negativeLabel
      * @return
@@ -147,12 +191,32 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
     }
 
     /**
+     * The negative text label
+     * @param negativeLabelRes
+     * @return
+     */
+    public OPTIONS_TYPE negativeLabel(int negativeLabelRes){
+        negative_label_res = negativeLabelRes;
+        return castThis();
+    }
+
+    /**
      * The neutral/middle text label
      * @param neutralLabel
      * @return
      */
     public OPTIONS_TYPE neutralLabel(String neutralLabel){
         neutral_label = neutralLabel;
+        return castThis();
+    }
+
+    /**
+     * The neutral text label
+     * @param neutralLabelRes
+     * @return
+     */
+    public OPTIONS_TYPE neutralLabel(int neutralLabelRes){
+        neutral_label_res = neutralLabelRes;
         return castThis();
     }
 

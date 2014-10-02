@@ -3,6 +3,7 @@ package com.raizlabs.android.dialogfactory.views;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
-
-import com.raizlabs.android.core.CompatibilityUtils;
 
 /**
  * This class constructs a dialog with a checkbox easily
@@ -114,7 +113,7 @@ public class CheckBoxDialogBuilder extends AlertDialog.Builder implements Compou
      * @return
      */
     public CheckBoxDialogBuilder setCheckBoxBackground(Drawable background) {
-        if (CompatibilityUtils.isAboveOrEqualToApiLevel(16)) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mCheck.setBackground(background);
         } else {
             mCheck.setBackgroundDrawable(background);
