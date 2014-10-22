@@ -45,3 +45,12 @@ android {
 dependencies {
     jarDependency "android-support-v4", "com.android.support:support-v4:20.+"
 }
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+
+artifacts {
+    archives androidSourcesJar
+}
