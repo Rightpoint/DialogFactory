@@ -1,13 +1,14 @@
 package com.raizlabs.android.dialogfactory.options;
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+
 /**
  * Created by andrewgrosner
- * Date: 6/11/14
- * Contributors:
- * Description: Allows certain options that the app will use globally.
+ * Description: Allows certain options that the app will use globally or on a dialog specific basis.
  */
 public class AlertThemeOptions {
-
 
     private int title_text_color_res;
 
@@ -19,27 +20,68 @@ public class AlertThemeOptions {
 
     private int message_text_gravity;
 
-    public AlertThemeOptions titleTextColorRes(int titleTextColorRes){
+    /**
+     * Applies the tint from android support tint manager to this dialog.
+     * @return
+     */
+    public AlertThemeOptions applyTint(Context context) {
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(context.getResources().getIdentifier("colorAccent", "attr", context.getPackageName()),
+                typedValue, true);
+        int color = typedValue.data;
+        setTitleTextColorRes(color);
+        setMessageTextColor(color);
+        setButtonTextColorRes(color);
+        return this;
+    }
+
+    /**
+     * Sets the color of the Title
+     * @param titleTextColorRes
+     * @return
+     */
+    public AlertThemeOptions setTitleTextColorRes(int titleTextColorRes){
         title_text_color_res = titleTextColorRes;
         return this;
     }
 
-    public AlertThemeOptions titleDividerColor(int titleDividerColor){
+    /**
+     * Sets the color of the divider
+     * @param titleDividerColor
+     * @return
+     */
+    public AlertThemeOptions seTitleDividerColor(int titleDividerColor){
         title_divider_color = titleDividerColor;
         return this;
     }
 
-    public AlertThemeOptions buttonTextColorRes(int buttonTextColor){
+    /**
+     * Applies a text color to all inner buttons
+     * @param buttonTextColor
+     * @return
+     */
+    public AlertThemeOptions setButtonTextColorRes(int buttonTextColor){
         button_text_color = buttonTextColor;
         return this;
     }
 
-    public AlertThemeOptions messageTextColor(int messageTextColor){
+    /**
+     * Applies a message text color to the dialog
+     * @param messageTextColor
+     * @return
+     */
+    public AlertThemeOptions setMessageTextColor(int messageTextColor){
         message_text_color = messageTextColor;
         return this;
     }
 
-    public AlertThemeOptions messageTextGravity(int gravity){
+    /**
+     * Applies a gravity to the message text
+     * @param gravity
+     * @return
+     */
+    public AlertThemeOptions setMessageTextGravity(int gravity){
         message_text_gravity = gravity;
         return this;
     }

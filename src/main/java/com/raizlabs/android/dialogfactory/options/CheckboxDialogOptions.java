@@ -32,7 +32,7 @@ public class CheckboxDialogOptions extends DialogOptions {
      * @param onCheckedChangeListener
      * @return
      */
-    public CheckboxDialogOptions onCheckChangeListener(CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
+    public CheckboxDialogOptions setOnCheckChangeListener(CompoundButton.OnCheckedChangeListener onCheckedChangeListener) {
         mOnCheckChangeListener = onCheckedChangeListener;
         return this;
     }
@@ -55,7 +55,7 @@ public class CheckboxDialogOptions extends DialogOptions {
      * @param layout
      * @return
      */
-    public CheckboxDialogOptions layout(int layout) {
+    public CheckboxDialogOptions setLayout(int layout) {
         this.layout = layout;
         return this;
     }
@@ -66,7 +66,7 @@ public class CheckboxDialogOptions extends DialogOptions {
      * @param text
      * @return
      */
-    public CheckboxDialogOptions checkBoxText(String text) {
+    public CheckboxDialogOptions setCheckBoxText(String text) {
         checkbox_text = text;
         return this;
     }
@@ -76,7 +76,7 @@ public class CheckboxDialogOptions extends DialogOptions {
      * @param resid
      * @return
      */
-    public CheckboxDialogOptions checkboxBackgroundResource(int resid) {
+    public CheckboxDialogOptions setCheckboxBackgroundResource(int resid) {
         checkbox_background_res = resid;
         return this;
     }
@@ -86,7 +86,7 @@ public class CheckboxDialogOptions extends DialogOptions {
      * @param drawable
      * @return
      */
-    public CheckboxDialogOptions checkboxDrawable(Drawable drawable) {
+    public CheckboxDialogOptions setCheckboxDrawable(Drawable drawable) {
         checkbox_drawable = drawable;
         return this;
     }

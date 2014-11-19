@@ -156,7 +156,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param title
      * @return
      */
-    public OPTIONS_TYPE title(String title){
+    public OPTIONS_TYPE setTitle(String title){
         this.title = title;
         return castThis();
     }
@@ -166,7 +166,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param titleRes
      * @return
      */
-    public OPTIONS_TYPE title(int titleRes){
+    public OPTIONS_TYPE setTitle(int titleRes){
         this.title_res = titleRes;
         return castThis();
     }
@@ -176,7 +176,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param message
      * @return
      */
-    public OPTIONS_TYPE message(String message){
+    public OPTIONS_TYPE setMessage(String message){
         this.message = message;
         return castThis();
     }
@@ -186,7 +186,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param messageRes
      * @return
      */
-    public OPTIONS_TYPE message(int messageRes){
+    public OPTIONS_TYPE setMessage(int messageRes){
         this.message_res = messageRes;
         return castThis();
     }
@@ -196,7 +196,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param positiveLabel
      * @return
      */
-    public OPTIONS_TYPE positiveLabel(String positiveLabel){
+    public OPTIONS_TYPE setPositiveLabel(String positiveLabel){
         positive_label = positiveLabel;
         return castThis();
     }
@@ -206,7 +206,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param positiveLabelRes
      * @return
      */
-    public OPTIONS_TYPE positiveLabel(int positiveLabelRes){
+    public OPTIONS_TYPE setPositiveLabel(int positiveLabelRes){
         positive_label_res = positiveLabelRes;
         return castThis();
     }
@@ -216,7 +216,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param negativeLabel
      * @return
      */
-    public OPTIONS_TYPE negativeLabel(String negativeLabel){
+    public OPTIONS_TYPE setNegativeLabel(String negativeLabel){
         negative_label = negativeLabel;
         return castThis();
     }
@@ -226,7 +226,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param negativeLabelRes
      * @return
      */
-    public OPTIONS_TYPE negativeLabel(int negativeLabelRes){
+    public OPTIONS_TYPE setNegativeLabel(int negativeLabelRes){
         negative_label_res = negativeLabelRes;
         return castThis();
     }
@@ -236,7 +236,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param neutralLabel
      * @return
      */
-    public OPTIONS_TYPE neutralLabel(String neutralLabel){
+    public OPTIONS_TYPE setNeutralLabel(String neutralLabel){
         neutral_label = neutralLabel;
         return castThis();
     }
@@ -246,12 +246,12 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param neutralLabelRes
      * @return
      */
-    public OPTIONS_TYPE neutralLabel(int neutralLabelRes){
+    public OPTIONS_TYPE setNeutralLabel(int neutralLabelRes){
         neutral_label_res = neutralLabelRes;
         return castThis();
     }
 
-    public OPTIONS_TYPE cancelable(boolean cancelable){
+    public OPTIONS_TYPE setCancelable(boolean cancelable){
         this.cancelable = cancelable;
         return castThis();
     }
@@ -261,7 +261,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param onClickListener
      * @return
      */
-    public OPTIONS_TYPE onPositiveClick(DialogInterface.OnClickListener onClickListener){
+    public OPTIONS_TYPE setOnPositiveClick(DialogInterface.OnClickListener onClickListener){
         mPositiveOnClick = onClickListener;
         return castThis();
     }
@@ -271,7 +271,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param onClickListener
      * @return
      */
-    public OPTIONS_TYPE onNegativeClick(DialogInterface.OnClickListener onClickListener){
+    public OPTIONS_TYPE setOnNegativeClick(DialogInterface.OnClickListener onClickListener){
         mNegativeOnClick = onClickListener;
         return castThis();
     }
@@ -281,7 +281,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param onClickListener
      * @return
      */
-    public OPTIONS_TYPE onNeutralClick(DialogInterface.OnClickListener onClickListener){
+    public OPTIONS_TYPE setOnNeutralClick(DialogInterface.OnClickListener onClickListener){
         mNeutralOnClick = onClickListener;
         return castThis();
     }
@@ -291,7 +291,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param listAdapter
      * @return
      */
-    public OPTIONS_TYPE adapter(ListAdapter listAdapter, DialogInterface.OnClickListener listClickListener){
+    public OPTIONS_TYPE setListAdapter(ListAdapter listAdapter, DialogInterface.OnClickListener listClickListener){
         mAdapter = listAdapter;
         mListClickListener = listClickListener;
         return castThis();
@@ -302,7 +302,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param dismissOnTouchOutside
      * @return
      */
-    public OPTIONS_TYPE dismissOnTouchOutside(boolean dismissOnTouchOutside){
+    public OPTIONS_TYPE setDismissOnTouchOutside(boolean dismissOnTouchOutside){
         this.dismissOnTouchOutside = dismissOnTouchOutside;
         return castThis();
     }
@@ -312,7 +312,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @param onCancelListener
      * @return
      */
-    public OPTIONS_TYPE onCancelListener(DialogInterface.OnCancelListener onCancelListener){
+    public OPTIONS_TYPE setOnCancelListener(DialogInterface.OnCancelListener onCancelListener){
         mOnCancelListener = onCancelListener;
         return castThis();
     }
@@ -323,7 +323,7 @@ public class DialogOptions<OPTIONS_TYPE extends DialogOptions> {
      * @return
      */
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    public OPTIONS_TYPE onDismissListener(DialogInterface.OnDismissListener onDismissListener){
+    public OPTIONS_TYPE setOnDismissListener(DialogInterface.OnDismissListener onDismissListener){
         mOnDismissListener = onDismissListener;
         return castThis();
     }

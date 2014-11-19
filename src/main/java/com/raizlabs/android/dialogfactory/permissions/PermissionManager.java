@@ -29,8 +29,8 @@ public class PermissionManager {
             }
         } else {
             // TODO: move strings to resources, make dialog module, or make configurable.
-            DialogFactory.showDialog(context, new DialogOptions().title(alertTitle).message(alertMessage)
-                    .yes().no().onPositiveClick(new DialogInterface.OnClickListener() {
+            DialogFactory.showDialog(context, new DialogOptions().setTitle(alertTitle).setMessage(alertMessage)
+                    .yes().no().setOnPositiveClick(new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (permissionListener != null) {
@@ -38,10 +38,10 @@ public class PermissionManager {
                             }
                         }
                     })
-                    .onNegativeClick(new DialogInterface.OnClickListener() {
+                    .setOnNegativeClick(new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            if(permissionListener != null) {
+                            if (permissionListener != null) {
                                 permissionListener.onPermissionDenied();
                             }
                         }

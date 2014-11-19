@@ -5,8 +5,6 @@ import android.content.Context;
 
 /**
  * Author: andrewgrosner
- * Date: 6/24/14
- * Contributors: { }
  * Description: Wraps around {@link DialogOptions} only allowing using options
  * pertaining to {@link android.app.ProgressDialog#show(android.content.Context, CharSequence, CharSequence,
  * boolean, boolean, android.content.DialogInterface.OnCancelListener)}
@@ -19,8 +17,12 @@ public class ProgressDialogOptions extends DialogOptions<ProgressDialogOptions> 
         return ProgressDialog.show(context, title, message, inDeterminate, cancelable, mOnCancelListener);
     }
 
-
-    public ProgressDialogOptions inDeterminate(boolean inDeterminate){
+    /**
+     * Makes the dialog indeterminate
+     * @param inDeterminate
+     * @return This instance
+     */
+    public ProgressDialogOptions setInDeterminate(boolean inDeterminate){
         this.inDeterminate = inDeterminate;
         return this;
     }

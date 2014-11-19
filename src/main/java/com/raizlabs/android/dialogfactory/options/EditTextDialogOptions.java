@@ -10,10 +10,8 @@ import android.text.TextUtils;
 import com.raizlabs.android.dialogfactory.views.EditTextDialogBuilder;
 
 /**
- * Created by andrewgrosner
- * Date: 6/11/14
- * Contributors:
- * Description:
+ * Author: andrewgrosner
+ * Description: Provides a handy way to create a dialog with a single {@link android.widget.EditText}
  */
 public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> {
 
@@ -58,7 +56,7 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
      * @param text
      * @return
      */
-    public EditTextDialogOptions editText(String text) {
+    public EditTextDialogOptions setEditTextText(String text) {
         this.text = text;
         return this;
     }
@@ -69,7 +67,7 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
      * @param hint
      * @return
      */
-    public EditTextDialogOptions hint(String hint) {
+    public EditTextDialogOptions setHint(String hint) {
         this.hint = hint;
         return this;
     }
@@ -79,7 +77,7 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
      * @param inputType
      * @return
      */
-    public EditTextDialogOptions inputType(int inputType) {
+    public EditTextDialogOptions setInputType(int inputType) {
         this.inputType = inputType;
         return this;
     }
@@ -89,7 +87,7 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
      * @param layout
      * @return
      */
-    public EditTextDialogOptions layout(int layout) {
+    public EditTextDialogOptions setLayout(int layout) {
         this.layout = layout;
         return this;
     }
@@ -100,7 +98,7 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
      * @param inputFilters
      * @return
      */
-    public EditTextDialogOptions inputFilters(InputFilter...inputFilters) {
+    public EditTextDialogOptions setInputFilters(InputFilter... inputFilters) {
         mInputFilters = inputFilters;
         return this;
     }
@@ -111,7 +109,7 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
      * @param validityChecker
      * @return
      */
-    public EditTextDialogOptions validityChecker(EditTextDialogBuilder.ValidityChecker validityChecker) {
+    public EditTextDialogOptions setValidityChecker(EditTextDialogBuilder.ValidityChecker validityChecker) {
         mValidityChecker = validityChecker;
         return this;
     }
@@ -122,13 +120,13 @@ public class EditTextDialogOptions extends DialogOptions<EditTextDialogOptions> 
      * @param validityResponseListener
      * @return
      */
-    public EditTextDialogOptions validityResponseListener(EditTextDialogBuilder.ValidityResponseListener validityResponseListener) {
+    public EditTextDialogOptions setValidityResponseListener(EditTextDialogBuilder.ValidityResponseListener validityResponseListener) {
         mValidityResponseListener = validityResponseListener;
         return this;
     }
 
     @Override
-    public EditTextDialogOptions onPositiveClick(DialogInterface.OnClickListener onClickListener) {
+    public EditTextDialogOptions setOnPositiveClick(DialogInterface.OnClickListener onClickListener) {
         throw new IllegalArgumentException("You cannot override the positive button in this dialog.");
     }
 }
