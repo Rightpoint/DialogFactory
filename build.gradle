@@ -32,7 +32,6 @@ android {
     buildToolsVersion "21.1.0"
 
     defaultConfig {
-        applicationId "com.raizlabs.android.dialogfactory"
         minSdkVersion 4
         targetSdkVersion 21
         versionName = version.replace("-SNAPSHOT", "")
